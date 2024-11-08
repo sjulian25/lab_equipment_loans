@@ -1,11 +1,11 @@
 from django.db import models
 from equipment.models import Equipment
-from user.models import User
+from user.models import LabUser
 
 
 # Create your models here.
 class Loan(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(LabUser, on_delete=models.CASCADE)
     equipment = models.ManyToManyField(Equipment)
     loan_date = models.DateTimeField(auto_now_add=True)
     return_date = models.DateTimeField(blank=True, null=True)
