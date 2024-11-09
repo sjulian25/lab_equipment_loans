@@ -64,3 +64,9 @@ class RegisterLabUserViewTests(APITestCase):
         }
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_list_users(self):
+        url = reverse('list_user')
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + str(self.token))  # Autenticación
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
