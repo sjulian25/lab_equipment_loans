@@ -20,9 +20,6 @@ class RegisterLabUserView(APIView):
         return permissions
 
     def post(self, request, *args, **kwargs):
-        # Verifica primero si es un admin
-        # if not IsInGroup(['admin']).has_permission(request, self):
-        #     return Response({"detail": "No tiene permiso para realizar esta acción."}, status=status.HTTP_403_FORBIDDEN)
 
         serializer = LabUserSerializer(data=request.data)
         if serializer.is_valid():

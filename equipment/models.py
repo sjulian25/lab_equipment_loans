@@ -4,7 +4,7 @@ from django.db import models
 class Equipment(models.Model):
     equipment_id = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=300, blank=True, null=True)
     aviable = models.BooleanField(default=False)
 
     def __str__(self):
